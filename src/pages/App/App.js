@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to Tktk</h1>
+        <h1>Welcome to sweetTooth</h1>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
