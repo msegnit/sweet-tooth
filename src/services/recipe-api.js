@@ -1,6 +1,6 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/tktks/';
+const BASE_URL = '/api/recipes/';
 
 export function index() {
   const options = {

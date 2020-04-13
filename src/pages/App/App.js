@@ -3,20 +3,47 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import SweetsSecretPage from '../SweetsSecretPage/SweetsSecretPage'
-import * as sweetAPI from '../../services/sweet-api';
+import * as recipeAPI from '../../services/recipe-api';
 import * as userAPI from '../../services/user-api';
-import Sweet from '../../components/Sweet/Sweet'
+import RecipeCard from '../../components/RecipeCard/RecipeCard'
 import NavBar from '../../components/NavBar/NavBar'
+import RecipeListPage from '../../pages/RecipeListPage/RecipeListPage';
+import AddRecipePage from '../../pages/AddRecipePage/AddRecipePage';
+import RecipeDetailPage from '../../pages/RecipeDetailPage/RecipeDetailPage';
+import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 
 class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    sweets: null
+    recipes: []
   };
 
-  /*--------------------------- Callback Methods ---------------------------*/
+  handleAddRecipe = async newRecData => {
+    const newRec = await recipeAPI.create(newRecData);
+    this.setState(state => ({
+      recipes: [...state.recipe, newRec]
+    }),
+    () => this.props.history.push('/'));
+  }
+
+  handleUpdateRecipe = async updatedRecData => {
+    const updatedRecipe = await recipeAPI.update(updatedRecData);
+    const newRecipesArray = this.state.recipes.map(p => 
+      p._id === updatedRecipe._id ? updatedRecipe : p
+    );
+    this.setState(
+      {recipes: newRecipesArray},
+      () => this.props.history.push('/')
+    );
+  }
+
+  handleDeleteRecipe= async id => {
+    await recipeAPI.deleteOne(id);
+    this.setState(state => ({
+      recipes: state.recipes.filter(p => p._id !== id)
+    }), () => this.props.history.push('/'));
+  }
 
   handleLogout = () => {
     userAPI.logout();
@@ -27,14 +54,10 @@ class App extends Component {
     this.setState({user: userAPI.getUser()});
   }
 
-  /*-------------------------- Lifecycle Methods ---------------------------*/
-
   async componentDidMount() {
-    const sweets = await sweetAPI.index();
-    this.setState({ sweets });
+    const recipes = await recipeAPI.index();
+    this.setState({ recipes });
   }
-
-  /*-------------------------------- Render --------------------------------*/
 
   render() {
     return (
@@ -57,14 +80,8 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/sweet-secret' render={() => 
-            userAPI.getUser() ? 
-              <SweetsSecretPage />
-            :
-              <Redirect to='/login'/>
-          }/>
           <Route exact path='/' render={() =>
-            <Sweet />
+            <RecipeCard />
           }/>
         </Switch>
       </div>
