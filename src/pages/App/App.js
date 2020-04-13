@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import * as recipeAPI from '../../services/recipe-api';
 import * as userAPI from '../../services/user-api';
-import RecipeCard from '../../components/RecipeCard/RecipeCard'
+//import RecipeCard from '../../components/RecipeCard/RecipeCard'
 import NavBar from '../../components/NavBar/NavBar'
 import RecipeListPage from '../../pages/RecipeListPage/RecipeListPage';
-import AddRecipePage from '../../pages/AddRecipePage/AddRecipePage';
-import RecipeDetailPage from '../../pages/RecipeDetailPage/RecipeDetailPage';
-import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
+//import AddRecipePage from '../../pages/AddRecipePage/AddRecipePage';
+//import RecipeDetailPage from '../../pages/RecipeDetailPage/RecipeDetailPage';
+//import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 
 class App extends Component {
   state = {
-    // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
     recipes: []
   };
@@ -81,7 +80,7 @@ class App extends Component {
             />
           }/>
           <Route exact path='/' render={() =>
-            <RecipeCard />
+            <RecipeListPage />
           }/>
         </Switch>
       </div>
