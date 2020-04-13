@@ -3,17 +3,17 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import TktksSecretPage from '../TktksSecretPage/TktksSecretPage'
-import * as tktkAPI from '../../services/tktk-api';
+import SweetsSecretPage from '../SweetsSecretPage/SweetsSecretPage'
+import * as sweetAPI from '../../services/sweet-api';
 import * as userAPI from '../../services/user-api';
-import Tktk from '../../components/Tktk/Tktk'
+import Sweet from '../../components/Sweet/Sweet'
 import NavBar from '../../components/NavBar/NavBar'
 
 class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    tktks: null
+    sweets: null
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
@@ -30,8 +30,8 @@ class App extends Component {
   /*-------------------------- Lifecycle Methods ---------------------------*/
 
   async componentDidMount() {
-    const tktks = await tktkAPI.index();
-    this.setState({ tktks });
+    const sweets = await sweetAPI.index();
+    this.setState({ sweets });
   }
 
   /*-------------------------------- Render --------------------------------*/
@@ -57,14 +57,14 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/tktk-secret' render={() => 
+          <Route exact path='/sweet-secret' render={() => 
             userAPI.getUser() ? 
-              <TktksSecretPage />
+              <SweetsSecretPage />
             :
               <Redirect to='/login'/>
           }/>
           <Route exact path='/' render={() =>
-            <Tktk />
+            <Sweet />
           }/>
         </Switch>
       </div>
