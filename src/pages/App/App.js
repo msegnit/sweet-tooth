@@ -62,7 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to sweetTooth</h1>
-            <NavLink exact to='/'>Recipe LIST</NavLink>
+            <NavLink exact to='/'>Recipe Index</NavLink>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/add'>Add Recipe</NavLink>
         <NavBar

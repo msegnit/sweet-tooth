@@ -16,7 +16,7 @@ function RecipeCard({recipe}) {
         </dl>
       </div>
       <div className='panel-footer'>
-        <Link to='/'>Return To Recipe List</Link>
+        <Link to='/'>Return To Recipe Index</Link>
       </div>
     </div>
   );

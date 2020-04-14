@@ -4,7 +4,7 @@ import RecipeListItem from '../../components/RecipeListItem/RecipeListItem';
 function RecipeListPage(props) {
   return (
     <>
-      <h1>Recipe List</h1>
+      <h1>Recipe Index</h1>
       <div className='RecipeListPage-grid'>
         {props.recipes.map(recipe => 
           <RecipeListItem
