@@ -28,31 +28,31 @@ class EditRecipePage extends Component {
         <h1>Edit Recipe</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Recipe Name (required)</label>
+            <label>Title:</label>
             <input
               className="form-control"
-              name="name"
-              value={this.state.formData.name}
+              name="title"
+              value={this.state.formData.title}
               onChange={this.handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>Recipe Breed (required)</label>
+            <label>Ingredients:</label>
             <input
               className="form-control"
-              name="breed"
-              value={this.state.formData.breed}
+              name="ingredients"
+              value={this.state.formData.ingredients}
               onChange={this.handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>Pup's Age</label>
+            <label>Instructions:</label>
             <input
               className="form-control"
-              name="age"
-              value={this.state.formData.age}
+              name="instructions"
+              value={this.state.formData.instructions}
               onChange={this.handleChange}
             />
           </div>
@@ -61,9 +61,9 @@ class EditRecipePage extends Component {
             className="btn btn-xs"
             disabled={this.state.invalidForm}
           >
-            SAVE RECIPE
+            Save Recipe
           </button>&nbsp;&nbsp;
-          <Link to='/'>CANCEL</Link>
+          <Link to='/'>Cancel</Link>
         </form>
       </>
     );

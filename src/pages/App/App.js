@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import * as recipeAPI from '../../services/recipe-api';
@@ -8,9 +8,9 @@ import * as userAPI from '../../services/user-api';
 //import RecipeCard from '../../components/RecipeCard/RecipeCard'
 import NavBar from '../../components/NavBar/NavBar'
 import RecipeListPage from '../../pages/RecipeListPage/RecipeListPage';
-//import AddRecipePage from '../../pages/AddRecipePage/AddRecipePage';
-//import RecipeDetailPage from '../../pages/RecipeDetailPage/RecipeDetailPage';
-//import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
+import AddRecipePage from '../../pages/AddRecipePage/AddRecipePage';
+import RecipeDetailPage from '../../pages/RecipeDetailPage/RecipeDetailPage';
+import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 
 class App extends Component {
   state = {
@@ -21,7 +21,7 @@ class App extends Component {
   handleAddRecipe = async newRecData => {
     const newRec = await recipeAPI.create(newRecData);
     this.setState(state => ({
-      recipes: [...state.recipe, newRec]
+      recipes: [...state.recipes, newRec]
     }),
     () => this.props.history.push('/'));
   }
@@ -62,11 +62,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to sweetTooth</h1>
+            <NavLink exact to='/'>Recipe LIST</NavLink>
+            &nbsp;&nbsp;&nbsp;
+            <NavLink exact to='/add'>Add Recipe</NavLink>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
-        <Switch>
+        <main>
           <Route exact path='/login' render={({ history }) => 
             <LoginPage
               history={history}
@@ -79,10 +82,27 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/' render={() =>
-            <RecipeListPage />
-          }/>
-        </Switch>
+          <Route exact path='/' render={() => 
+            <RecipeListPage
+              recipes={this.state.recipes}
+              handleDeleteRecipe={this.handleDeleteRecipe}
+            />
+          } />
+          <Route exact path='/add' render={() => 
+            <AddRecipePage
+              handleAddRecipe={this.handleAddRecipe}
+            />
+          } />
+          <Route exact path='/details' render={({location}) => 
+            <RecipeDetailPage location={location}/>
+          } />
+          <Route exact path='/edit' render={({location}) => 
+            <EditRecipePage
+              handleUpdateRecipe={this.handleUpdateRecipe}
+               location={location}
+              />
+          } />
+        </main>
       </div>
     );
   }

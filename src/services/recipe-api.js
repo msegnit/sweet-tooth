@@ -12,7 +12,7 @@ export function index() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
-export function create(score) {
+export function create(rec) {
   const options = {
     method: 'POST',
     headers: {
@@ -20,7 +20,7 @@ export function create(score) {
       // Add this header - don't forget the space after Bearer
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: JSON.stringify(score)
+    body: JSON.stringify(rec)
   };
   return fetch(BASE_URL, options).then(res => res.json());
 }

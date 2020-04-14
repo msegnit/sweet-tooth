@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var recipeSchema = new Schema({
-  name: {type: String, required: true},
-  breed: {type: String, default: 'Mixed'},
-  age: {type: Number, default: 0}
+  title: {type: String},
+  ingredients: {type: String, default: ''},
+  instructions: {type: String}
 },{
   timestamps: true
 });

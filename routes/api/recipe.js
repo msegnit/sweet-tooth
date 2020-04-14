@@ -6,7 +6,7 @@ const recipesCtrl = require('../../controllers/recipes');
 
 router.get('/', recipesCtrl.index);
 router.get('/:id', recipesCtrl.show);
-router.post('/', recipesCtrl.create);
+//router.post('/', recipesCtrl.create);
 router.delete('/:id', recipesCtrl.delete);
 router.put('/:id', recipesCtrl.update);
 
@@ -18,9 +18,9 @@ router.post('/', recipesCtrl.create);
 
 /*----------------------------- Helper Functions ----------------------------*/
 
-function checkAuth(req, res, next) {
-  if (req.user) return next();
-  return res.status(401).json({msg: 'Not Authorized'});
-}
+// function checkAuth(req, res, next) {
+//   if (req.user) return next();
+//   return res.status(401).json({msg: 'Not Authorized'});
+// }
 
 module.exports = router;

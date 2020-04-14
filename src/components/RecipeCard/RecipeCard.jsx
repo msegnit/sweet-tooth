@@ -9,14 +9,14 @@ function RecipeCard({recipe}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Dessert Type</dt>
-          <dd>{recipe.type}</dd>
-          <dt>Age</dt>
-          <dd>{recipe.age}</dd>
+          <dt>Ingredients</dt>
+          <dd>{recipe.ingredients}</dd>
+          <dt>Instructions</dt>
+          <dd>{recipe.instructions}</dd>
         </dl>
       </div>
       <div className='panel-footer'>
-        <Link to='/'>RETURN TO LIST</Link>
+        <Link to='/'>Return To Recipe List</Link>
       </div>
     </div>
   );

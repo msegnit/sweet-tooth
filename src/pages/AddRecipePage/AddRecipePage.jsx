@@ -4,9 +4,9 @@ class AddRecipePage extends Component {
   state = {
     invalidForm: true,
     formData: {
-      name: '',
-      breed: 'Mixed',
-      age: '0'
+      title: '',
+      ingredients: '',
+      instructions: ''
     }
   };
 
@@ -31,31 +31,31 @@ class AddRecipePage extends Component {
         <h1>Add Recipe</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Recipe Type (required)</label>
+            <label>Title:</label>
             <input
               className="form-control"
-              name="name"
-              value={this.state.formData.name}
+              name="title"
+              value={this.state.formData.title}
               onChange={this.handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>Pup's Breed (required)</label>
+            <label>Ingredients:</label>
             <input
               className="form-control"
-              name="breed"
-              value={this.state.formData.breed}
+              name="ingredients"
+              value={this.state.formData.ingredients}
               onChange={this.handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label>Pup's Age</label>
+            <label>Instructions:</label>
             <input
               className="form-control"
-              name="age"
-              value={this.state.formData.age}
+              name="instructions"
+              value={this.state.formData.instructions}
               onChange={this.handleChange}
             />
           </div>
@@ -64,7 +64,7 @@ class AddRecipePage extends Component {
             className="btn"
             disabled={this.state.invalidForm}
           >
-            ADD Recipe
+            Add Recipe To Your List!
           </button>
         </form>
       </>

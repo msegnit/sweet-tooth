@@ -5,7 +5,7 @@ function RecipeListPage(props) {
   return (
     <>
       <h1>Recipe List</h1>
-      {/* <div className='RecipeListPage-grid'>
+      <div className='RecipeListPage-grid'>
         {props.recipes.map(recipe => 
           <RecipeListItem
             recipe={recipe}
@@ -13,7 +13,7 @@ function RecipeListPage(props) {
             key={recipe._id}
           />
         )}
-      </div> */}
+      </div>
     </>
   );
 }
