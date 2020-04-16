@@ -2,6 +2,7 @@ import React from 'react';
 import RecipeListItem from '../../components/RecipeListItem/RecipeListItem';
 
 function RecipeListPage(props) {
+    if(props.recipes.length) {
   return (
     <>
       <h1>Recipe Index</h1>
@@ -15,6 +16,9 @@ function RecipeListPage(props) {
         )}
       </div>
     </>
-  );
+    );
+  } else {
+    return<h3>No Recipes Listed</h3>
+  }
 }
 export default RecipeListPage;

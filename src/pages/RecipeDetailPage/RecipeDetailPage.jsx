@@ -5,7 +5,7 @@ function RecipeDetailPage(props) {
   const recipe = props.location.state.recipe;
   return (
     <>
-      <h1>Recipe Details</h1>
+      <h1>{recipe.title}</h1>
       <RecipeCard
         key={recipe._id}
         recipe={recipe}

@@ -5,7 +5,7 @@ function RecipeListItem({recipe, handleDeleteRecipe}) {
   return (
     <div className='panel panel-default'>
       <div className="panel-heading">
-        <h3 className='panel-title'>recipe</h3>
+  <h3 className='panel-title'>{recipe.title}</h3>
       </div>
       <div className='panel-footer RecipeListItem-action-panel'>
         <Link
@@ -17,6 +17,7 @@ function RecipeListItem({recipe, handleDeleteRecipe}) {
         >
           DETAILS
         </Link>
+        &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <Link
           className='btn btn-xs btn-warning'
           to={{
@@ -25,7 +26,8 @@ function RecipeListItem({recipe, handleDeleteRecipe}) {
           }}
         >
           EDIT
-        </Link>
+       </Link>
+       <br/>
         <button
           className='btn btn-xs btn-danger margin-left-10'
           onClick={() => handleDeleteRecipe(recipe._id)}

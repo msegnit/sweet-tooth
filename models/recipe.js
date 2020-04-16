@@ -4,8 +4,12 @@ var Schema = mongoose.Schema;
 var recipeSchema = new Schema({
   title: {type: String},
   ingredients: {type: String, default: ''},
-  instructions: {type: String}
-},{
+  instructions: {type: String},
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
+}, {
   timestamps: true
 });
 
