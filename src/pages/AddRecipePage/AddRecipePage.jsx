@@ -28,32 +28,31 @@ class AddRecipePage extends Component {
   render() {
     return (
       <>
-        <h1>Add Recipe</h1>
-        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Title:</label>
+        {/* <h2>Add Recipe</h2> */}
+        <form className="ui form"
+         ref={this.formRef} autoComplete="off" 
+         onSubmit={this.handleSubmit}>
+        <div className="field">
+          <label>Title:</label>
             <input
-              className="form-control"
               name="title"
               value={this.state.formData.title}
               onChange={this.handleChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className="field">
             <label>Ingredients:</label>
             <input
-              className="form-control"
               name="ingredients"
               value={this.state.formData.ingredients}
               onChange={this.handleChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className="field">
             <label>Instructions:</label>
             <input
-              className="form-control"
               name="instructions"
               value={this.state.formData.instructions}
               onChange={this.handleChange}
@@ -61,10 +60,10 @@ class AddRecipePage extends Component {
           </div>
           <button
             type="submit"
-            className="btn"
+            className="ui large button"
             disabled={this.state.invalidForm}
           >
-            Add Recipe To Your List!
+            Add Recipe To Your List
           </button>
         </form>
       </>

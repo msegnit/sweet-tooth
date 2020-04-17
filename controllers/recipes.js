@@ -9,9 +9,8 @@ module.exports = {
 };
 
 async function index(req, res) {
-  req.body.user = req.user._id
-  const recipe = await Recipe.create(req.body);
-  res.status(201).json(recipe);
+  const recipes = await Recipe.find({user:req.user.id});
+  res.status(200).json(recipes);
 }
 
 async function show(req, res) {
@@ -20,6 +19,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+  req.body.user = req.user._id
   const recipe = await Recipe.create(req.body);
   res.status(201).json(recipe);
 }

@@ -61,10 +61,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to sweetTooth</h1>
-            <NavLink exact to='/'>Recipe Index</NavLink>
-            &nbsp;&nbsp;&nbsp;
-            <NavLink exact to='/add'>Add Recipe</NavLink>
+        <h1>sweetTooth</h1>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}

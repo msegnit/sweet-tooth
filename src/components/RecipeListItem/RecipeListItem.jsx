@@ -9,31 +9,29 @@ function RecipeListItem({recipe, handleDeleteRecipe}) {
       </div>
       <div className='panel-footer RecipeListItem-action-panel'>
         <Link
-          className='btn btn-xs btn-info'
+          className='ui button'
           to={{
             pathname: '/details',
             state: {recipe}
           }}
         >
-          DETAILS
+          Details
         </Link>
-        &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        {/* &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; */}
         <Link
-          className='btn btn-xs btn-warning'
+          className='ui button'
           to={{
             pathname: '/edit',
             state: {recipe}
           }}
         >
-          EDIT
+          Edit
        </Link>
-       <br/>
-        <button
-          className='btn btn-xs btn-danger margin-left-10'
-          onClick={() => handleDeleteRecipe(recipe._id)}
-        >
-          DELETE
-        </button>
+        <Link
+          className='ui button'
+          onClick={() => handleDeleteRecipe(recipe._id)}>
+          Delete
+        </Link>
       </div>
     </div>
   );

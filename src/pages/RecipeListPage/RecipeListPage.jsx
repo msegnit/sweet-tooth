@@ -5,7 +5,7 @@ function RecipeListPage(props) {
     if(props.recipes.length) {
   return (
     <>
-      <h1>Recipe Index</h1>
+      {/* <h1>Recipe Index</h1> */}
       <div className='RecipeListPage-grid'>
         {props.recipes.map(recipe => 
           <RecipeListItem
