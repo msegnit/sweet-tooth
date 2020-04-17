@@ -9,8 +9,9 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const recipes = await Recipe.find({user:req.user.id});
-  res.status(200).json(recipes);
+  req.body.user = req.user._id
+  const recipe = await Recipe.create(req.body);
+  res.status(201).json(recipe);
 }
 
 async function show(req, res) {
