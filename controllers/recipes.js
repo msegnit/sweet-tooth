@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const recipes = await Recipe.find({user:req.user.id});
+  const recipes = await Recipe.find({user:req.user._id});
   res.status(200).json(recipes);
 }
 

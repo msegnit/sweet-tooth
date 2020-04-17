@@ -46,7 +46,7 @@ class App extends Component {
 
   handleLogout = () => {
     userAPI.logout();
-    this.setState({ user: null });
+    this.setState({ user: null, recipes: [] });
   }
 
   handleSignupOrLogin = () => {
