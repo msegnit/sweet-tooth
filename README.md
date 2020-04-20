@@ -34,6 +34,7 @@ sweetTooth was created to help you store all of your dessert recipes in one plac
 - Imgur
 - Node.js
 - React
+- Chajr
 
 ## Planned future enhancements for sweetTooth:
 - Add a dessert recipe API
